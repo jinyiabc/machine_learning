@@ -28,20 +28,22 @@ sample = np.random.uniform(low=-1, high=1.0+eps, size=(100,2))
 X = np.column_stack((sample, np.ones(100)))
 Y = np.sign(np.dot(X, w0))
 cur_w = np.zeros(3)
-pre_w = np.ones(3)
+pre_w1 = np.ones(3)
 precison = 0.01
 iter = 0
-while np.linalg.norm((pre_w - cur_w)) >= precison:
-    pre_w = cur_w
+while np.linalg.norm((pre_w1 - cur_w)) >= precison:
+    pre_w1 = cur_w
     shuffle = np.random.choice(100, 100, replace=False)
     
     eta = 0.01
     for i in shuffle:
-        GD = gradient_descent(pre_w, X[i], Y[i])    
+        pre_w = cur_w
+        GD = gradient_descent(pre_w, X[i], Y[i])  
         cur_w = pre_w - eta*GD
+        #print(i, np.linalg.norm((pre_w - cur_w)))
         #print(cur_w)
     iter +=1
-print(cur_w)    
+print(cur_w, np.linalg.norm((pre_w - cur_w)))    
 A0 = np.column_stack((data_set, np.ones(2)))
 print("test:",np.dot(A0, cur_w),np.dot(A0, w0))
 print("precision", np.linalg.norm((pre_w - cur_w))) 
