@@ -8,7 +8,8 @@ Created on Wed Mar  6 00:43:16 2019
 
 import pandas as pd
 
-df = pd.read_stata('http://www.principlesofeconometrics.com/stata/mroz.dta')
-print(df.head())
+#df = pd.read_stata('http://www.principlesofeconometrics.com/stata/mroz.dta')
+#print(df.head())
 
-df1 = pd.read_csv('in.csv')
+df1 = pd.read_csv('in.csv', header=None)
+df2 = pd.read_csv('out.csv', header=None)
