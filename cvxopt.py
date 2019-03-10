@@ -20,9 +20,4 @@ sol = solvers.qp(P,q,G,h)
 sol['x'] # [7.13e-07, 5.00e+00]
 sol['primal objective'] # 20.0000061731
 
-N = 10
-P = numpy.identity(N)
-q = numpy.zeros(N)
-#  -y_n*T(x_n)* w <= -1 + y_n*b
-# G = -y_n*T(x_n)
-# h = -1 + y_n*b
+# Homework 7-8
