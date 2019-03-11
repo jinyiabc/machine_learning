@@ -13,7 +13,7 @@ from numpy import transpose, matmul, dot
 N = 7291
 C = 0.01
 Q = 2
-const1 = np.array([4, 2])
+const1 = np.array([4])
 df1 = pd.read_csv('train.csv')
 #df2 = pd.read_csv('test.csv')
 
@@ -33,5 +33,5 @@ for const in const1:
     
             else:                
                 P[i][j] = P[j][i]
-    path = '/Volumes/SSD/p' + str(const) + '.npy'     
+    path = 'p' + str(const) + '.npy'     
     np.save(path, P) 
