@@ -15,7 +15,7 @@ from numpy import transpose, matmul, dot
 N = 7291
 C = 0.01
 Q = 2
-const = 4
+const = 2
 df1 = pd.read_csv('train.csv')
 #df2 = pd.read_csv('test.csv')
 
@@ -55,7 +55,7 @@ def qp(x, y):
     np.save('/Volumes/SSD/a' + str(x) + '.npy', a)
     return
 
-qp(const, y_n)
+#qp(const, y_n)
     
 path = '/Volumes/SSD/a' + str(const) + '.npy'
 a = np.load(path)
@@ -91,16 +91,16 @@ def wz(a, y, x, x1, Q):
 
 b = y_n[idx] - wz(a0, y_n, x_n, x_n[idx], Q)
 
-#sum = 0
-#for i in range(N):
-#    if y_n[i] != np.sign(wz(a0, y_n, x_n, x_n[i], Q) + b):
-#        sum = sum + 1
-#print(sum/N)
+sum = 0
+for i in range(N):
+    if y_n[i] != np.sign(wz(a0, y_n, x_n, x_n[i], Q) + b):
+        sum = sum + 1
+print(sum/N)
 
 
 
-## 2 versus all E_ in:                           18
-## 4 versus all E_in: 0.8192291866684954         
+## 2 versus all E_ in:0.8997394047455768          18
+## 4 versus all E_in: 0.8192291866684954         3051
 ## 6 versus all E_in: 0.6985324372514058         3347
 ## 8 versus all E_in  0.925661774790838           32
 ## 0 versus all E_in: 0.8362364559045399      sv: 40
